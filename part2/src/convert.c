@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+ * inpired by https://www.techiedelight.com/binary-representation-number/
+ */
 void print_binary(unsigned int n) {
 	int i;
 	for(i = 31;i >= 0;i--) {
@@ -16,7 +19,8 @@ int main(void) {
     int x;
     printf("Enter an integer : ");
     scanf("%d", &x);
-    printf("\nsigned decimal   : %d\n", x);
+    printf("\n");
+    printf("signed decimal   : %d\n", x);
     printf("unsigned decimal : %u\n", (unsigned int) x);
     printf("hexadecimal      : %x\n", (unsigned int) x);
     printf("binary           : ");
