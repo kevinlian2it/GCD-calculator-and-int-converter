@@ -1,20 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
- * inpired by https://www.techiedelight.com/binary-representation-number/
- */
-void print_binary(unsigned int n) {
-	int i;
-	for(i = 31;i >= 0;i--) {
-		putc(((n >> i) & 1) + '0',stdout);
-		if(i % 4 == 0) {
-			putc(' ',stdout);
-		}
-	}
-	putc('\n',stdout);
-}
-
 int main(void) {
     int x;
     printf("Enter an integer : ");
@@ -24,7 +10,18 @@ int main(void) {
     printf("unsigned decimal : %u\n", (unsigned int) x);
     printf("hexadecimal      : %x\n", (unsigned int) x);
     printf("binary           : ");
-    print_binary((unsigned int) x);
+    unsigned int mask = 1u << 31;
+    int count = 0;
+    for(int i = 31;i >= 0;i--) {
+	    count++;
+	    if(((unsigned int)x & mask) == 0)
+		    putc('0',stdout);
+	    else
+		    putc('1',stdout);
+	    if((count & 0x3) == 0)
+		    putc(' ',stdout);
+	    mask >>= 1;
+    }
     putc('\n', stdout);
     return 0;
 }
